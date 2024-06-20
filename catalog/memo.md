@@ -7,6 +7,6 @@ $AOAI_REGION = 'swedencentral'
 $CLIENT_IP = (curl ifconfig.io/ip)
 
 az group create -n $RG -l $REGION
-az deployment group create -g $RG -f .\catalog\aiapp-external\main.bicep `
+az deployment group create -g $RG -f .\catalog\environments\aiapp-external\main.bicep `
     -p allowedClientIp=$CLIENT_IP region=$REGION aoaiRegion=$AOAI_REGION
 ```

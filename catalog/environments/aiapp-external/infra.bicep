@@ -6,7 +6,7 @@ var uamiName = 'uami-${postfix}'
 var vnetName = 'vnet-${postfix}'
 var acaSubnetName = 'aca-subnet'
 var devboxSubnetName = 'devbox-subnet'
-var devboxConnettoinName = 'devcon-${postfix}'
+// var devboxConnettoinName = 'devcon-${postfix}'
 
 var privateEndpointSubnetName = 'private-endpoint-subnet'
 var natgwPipName = 'pip-${postfix}'
@@ -54,15 +54,15 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-11-01' = {
   }
 }
 
-resource devcon 'Microsoft.DevCenter/networkConnections@2024-05-01-preview' = {
-  name: devboxConnettoinName
-  location: region
-  properties: {
-    domainJoinType: 'AzureADJoin'
-    subnetId: resourceId('Microsoft.Network/virtualNetworks/subnets', vnetName, devboxSubnetName)
-    networkingResourceGroupName: resourceGroup().name
-  }
-}
+// resource devcon 'Microsoft.DevCenter/networkConnections@2024-05-01-preview' = {
+//   name: devboxConnettoinName
+//   location: region
+//   properties: {
+//     domainJoinType: 'AzureADJoin'
+//     subnetId: resourceId('Microsoft.Network/virtualNetworks/subnets', vnetName, devboxSubnetName)
+//     networkingResourceGroupName: resourceGroup().name
+//   }
+// }
 
 resource pip 'Microsoft.Network/publicIPAddresses@2023-11-01' = {
   name: natgwPipName

@@ -1,5 +1,5 @@
 name: AIAppLab_External
-version: 1.4.1
+version: 1.4.2
 summary: AI Application Lab environment (external configuration)
 description: Deploy azure container apps and backend services like openai, cosmos, storage, etc...
 runner: ARM
@@ -8,18 +8,15 @@ parameters:
 - id: "region"
   name: "region"
   description: "region name for main target"
-  default: "japaneast"
   type: "string"
-  required: false
+  required: true
 - id: "aoaiRegion"
   name: "aoaiRegion"
   description: "region name for azure openai account"
-  default: "swedencentral"
   type: "string"
-  required: false
+  required: true
 - id: "allowedClientIp"
   name: "allowedClientIp"
   description: "public ip address of developer's outbound"
   type: "string"
-  default: "198.51.100.178"
-  required: false
+  required: true

@@ -21,4 +21,5 @@ parameters:
   name: "allowedClientIp"
   description: "public ip address of developer's outbound"
   type: "string"
-  required: true
+  default: "198.51.100.178"
+  required: false

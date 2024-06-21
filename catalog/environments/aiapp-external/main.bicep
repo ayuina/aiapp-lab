@@ -1,5 +1,5 @@
-param region string = 'japaneast'
-param aoaiRegion string = 'swedencentral'
+param region string
+param aoaiRegion string
 param allowedClientIp string
 
 var postfix = toLower(uniqueString(subscription().id, resourceGroup().name, region))

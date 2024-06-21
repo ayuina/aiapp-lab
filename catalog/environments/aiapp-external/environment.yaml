@@ -1,5 +1,5 @@
 name: AIAppLab_External
-version: 1.4.0
+version: 1.4.1
 summary: AI Application Lab environment (external configuration)
 description: Deploy azure container apps and backend services like openai, cosmos, storage, etc...
 runner: ARM

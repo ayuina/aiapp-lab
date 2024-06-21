@@ -5,7 +5,9 @@ var logAnalyticsName = 'laws-${postfix}'
 var uamiName = 'uami-${postfix}'
 var vnetName = 'vnet-${postfix}'
 var acaSubnetName = 'aca-subnet'
-var defaultSubnetName = 'default'
+var devboxSubnetName = 'devbox-subnet'
+// var devboxConnettoinName = 'devcon-${postfix}'
+
 var privateEndpointSubnetName = 'private-endpoint-subnet'
 var natgwPipName = 'pip-${postfix}'
 var natgwName = 'natgw-${postfix}'
@@ -20,7 +22,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-11-01' = {
     }
     subnets: [
       {
-        name: defaultSubnetName
+        name: devboxSubnetName
         properties: {
           addressPrefix: '10.0.0.0/24' 
         }
@@ -48,10 +50,19 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-11-01' = {
           addressPrefix: '10.0.2.0/24'
         }
       }
-
     ]
   }
 }
+
+// resource devcon 'Microsoft.DevCenter/networkConnections@2024-05-01-preview' = {
+//   name: devboxConnettoinName
+//   location: region
+//   properties: {
+//     domainJoinType: 'AzureADJoin'
+//     subnetId: resourceId('Microsoft.Network/virtualNetworks/subnets', vnetName, devboxSubnetName)
+//     networkingResourceGroupName: resourceGroup().name
+//   }
+// }
 
 resource pip 'Microsoft.Network/publicIPAddresses@2023-11-01' = {
   name: natgwPipName
@@ -111,5 +122,5 @@ output uamiName string = uami.name
 output vnetName string = vnet.name
 output acaSubnetName string = acaSubnetName
 output acaNatgwIpAddress string = pip.properties.ipAddress
-output defaultSubnetName string = defaultSubnetName
+output devboxSubnetName string = devboxSubnetName
 output privateEndpointSubnetName string = privateEndpointSubnetName
